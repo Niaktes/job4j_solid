@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -32,6 +33,14 @@ class MaxMinTest {
         Comparator<String> comparator = Comparator.comparingInt(String :: length);
         assertEquals("и", maxMin.min(values, comparator));
         assertEquals("Вениамин Семенович", maxMin.max(values, comparator));
+    }
+
+    @Test
+    void whenListIsEmptyThenReturnNull() {
+        List<Integer> emptyList = new ArrayList<>();
+        Comparator<Integer> comparator = Comparator.naturalOrder();
+        assertNull(maxMin.max(emptyList, comparator));
+        assertNull(maxMin.min(emptyList, comparator));
     }
 
 }

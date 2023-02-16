@@ -7,11 +7,11 @@ import java.util.function.IntPredicate;
 public class MaxMin {
 
     public <T> T max(List<T> values, Comparator<T> comparator) {
-        return findMaxMin(values, comparator, x -> x > 0);
+        return values.isEmpty() ? null : findMaxMin(values, comparator, x -> x > 0);
     }
 
     public <T> T min(List<T> values, Comparator<T> comparator) {
-        return findMaxMin(values, comparator, x -> x < 0);
+        return values.isEmpty() ? null : findMaxMin(values, comparator, x -> x < 0);
     }
 
     private <T> T findMaxMin(List<T> values, Comparator<T> comparator, IntPredicate predicate) {
