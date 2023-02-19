@@ -1,5 +1,7 @@
 package ru.job4j.ood.srp.model;
 
+import ru.job4j.ood.srp.currency.Currency;
+
 import java.util.Calendar;
 import java.util.Objects;
 
@@ -9,12 +11,14 @@ public class Employee {
     private Calendar hired;
     private Calendar fired;
     private double salary;
+    private Currency currency;
 
-    public Employee(String name, Calendar hired, Calendar fired, double salary) {
+    public Employee(String name, Calendar hired, Calendar fired, double salary, Currency currency) {
         this.name = name;
         this.hired = hired;
         this.fired = fired;
         this.salary = salary;
+        this.currency = currency;
     }
 
     public String getName() {
@@ -47,6 +51,14 @@ public class Employee {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
 
     @Override
