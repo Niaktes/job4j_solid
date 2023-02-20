@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import ru.job4j.ood.srp.currency.Currency;
+import ru.job4j.ood.srp.currency.CurrencyConverter;
+import ru.job4j.ood.srp.currency.InMemoryCurrencyConverter;
 import ru.job4j.ood.srp.formatter.DateTimeParser;
 import ru.job4j.ood.srp.formatter.ReportDateTimeParser;
 import ru.job4j.ood.srp.model.Employee;
@@ -20,10 +22,11 @@ class ADReportEngineTest {
         Employee first = new Employee("Jim", now, now, 100, Currency.USD);
         Employee second = new Employee("Beam", now, now, 100, Currency.RUB);
         DateTimeParser<Calendar> parser = new ReportDateTimeParser();
+        CurrencyConverter converter = new InMemoryCurrencyConverter();
         String dateTime = parser.parse(now);
         store.add(first);
         store.add(second);
-        Report engine = new ADReportEngine(store, parser, Currency.RUB);
+        Report engine = new ADReportEngine(store, parser, converter, Currency.RUB);
         StringBuilder expected = new StringBuilder()
                 .append("Name; Hired; Fired; Salary in RUB;")
                 .append(System.lineSeparator())

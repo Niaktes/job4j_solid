@@ -12,17 +12,18 @@ public class ADReportEngine implements Report {
 
     private final Store store;
     private final DateTimeParser<Calendar> dateTimeParser;
+    private final CurrencyConverter converter;
     private final Currency targetCurrency;
 
-    public ADReportEngine(Store store, DateTimeParser<Calendar> dateTimeParser, Currency currency) {
+    public ADReportEngine(Store store, DateTimeParser<Calendar> dateTimeParser, CurrencyConverter converter, Currency currency) {
         this.store = store;
         this.dateTimeParser = dateTimeParser;
+        this.converter = converter;
         this.targetCurrency = currency;
     }
 
     @Override
     public String generate(Predicate<Employee> filter) {
-        CurrencyConverter currencyConverter = new InMemoryCurrencyConverter();
         StringBuilder text = new StringBuilder();
         text.append(String.format("Name; Hired; Fired; Salary in %s;", targetCurrency))
                 .append(System.lineSeparator());
@@ -30,7 +31,7 @@ public class ADReportEngine implements Report {
             text.append(employee.getName()).append(" ")
                     .append(dateTimeParser.parse(employee.getHired())).append(" ")
                     .append(dateTimeParser.parse(employee.getFired())).append(" ")
-                    .append(currencyConverter.convert(employee.getCurrency(), employee.getSalary(), targetCurrency))
+                    .append(converter.convert(employee.getCurrency(), employee.getSalary(), targetCurrency))
                     .append(System.lineSeparator());
         }
         return text.toString();
