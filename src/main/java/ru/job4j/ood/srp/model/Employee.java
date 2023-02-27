@@ -2,16 +2,22 @@ package ru.job4j.ood.srp.model;
 
 import ru.job4j.ood.srp.currency.Currency;
 
+import javax.xml.bind.annotation.*;
 import java.util.Calendar;
 import java.util.Objects;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {"name", "hired", "fired", "currency", "salary"})
 public class Employee {
 
+    @XmlAttribute
     private String name;
     private Calendar hired;
     private Calendar fired;
     private double salary;
     private Currency currency;
+
+    public Employee() { }
 
     public Employee(String name, Calendar hired, Calendar fired, double salary, Currency currency) {
         this.name = name;
