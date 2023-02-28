@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class JSONSerializerTest {
+class JSONEmployeeSerializerTest {
 
     @Test
     void whenSerializeTwoEmployeesThenGetSerializedEmployeesAsJSONText() {
@@ -18,7 +18,7 @@ class JSONSerializerTest {
         Employee first = new Employee("Gena", calendar, calendar, 100, Currency.USD);
         Employee second = new Employee("Lena", calendar, calendar, 100, Currency.RUB);
         List<Employee> employees = List.of(first, second);
-        Serializer<Employee> serializer = new JSONSerializer<>();
+        Serializer<Employee> serializer = new JSONEmployeeSerializer();
         StringBuilder expected = new StringBuilder()
                 .append("{\"name\":\"Gena\",")
                 .append("\"hired\":{\"year\":2023,\"month\":1,\"dayOfMonth\":27,\"hourOfDay\":0,\"minute\":0,\"second\":0},")

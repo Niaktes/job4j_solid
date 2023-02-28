@@ -12,13 +12,18 @@ import java.util.List;
 
 public class XMLEmployeeSerializer implements Serializer<Employee> {
 
+    private final Marshaller marshaller;
+
+    public XMLEmployeeSerializer() throws JAXBException {
+            JAXBContext context = JAXBContext.newInstance(Employees.class);
+            marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+    }
+
     @Override
     public String serialize(List<Employee> employees) {
         String xml = "";
         try (StringWriter writer = new StringWriter()) {
-            JAXBContext context = JAXBContext.newInstance(Employees.class);
-            Marshaller marshaller = context.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             marshaller.marshal(new Employees(employees), writer);
             xml = writer.getBuffer().toString();
         } catch (JAXBException | IOException e) {

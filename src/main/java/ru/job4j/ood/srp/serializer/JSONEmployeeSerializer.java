@@ -2,24 +2,26 @@ package ru.job4j.ood.srp.serializer;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import ru.job4j.ood.srp.model.Employee;
 
 import java.util.List;
 
-public class JSONSerializer<T> implements Serializer<T> {
+public class JSONEmployeeSerializer implements Serializer<Employee> {
 
     private final Gson gson;
 
-    public JSONSerializer() {
+    public JSONEmployeeSerializer() {
         this.gson = new GsonBuilder().create();
     }
 
     @Override
-    public String serialize(List<T> elements) {
+    public String serialize(List<Employee> employees) {
         StringBuilder json = new StringBuilder();
-        for (T element : elements) {
-            json.append(gson.toJson(element))
+        for (Employee employee : employees) {
+            json.append(gson.toJson(employee))
                     .append(System.lineSeparator());
         }
         return json.toString();
     }
+
 }
