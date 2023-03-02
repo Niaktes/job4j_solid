@@ -8,13 +8,13 @@ class WarehouseTest {
 
     @Test
     void whenRemainingShelfLifeMoreThen75PercentThenSuitableIsTrue() {
-        Store warehouse = new Warehouse();
+        AbstractStore warehouse = new Warehouse();
         assertTrue(warehouse.checkSuitability(75.1f));
     }
 
     @Test
     void whenRemainingShelfLifeLessThen75PercentThenSuitableIsFalse() {
-        Store warehouse = new Warehouse();
+        AbstractStore warehouse = new Warehouse();
         assertFalse(warehouse.checkSuitability(74.9f));
     }
 

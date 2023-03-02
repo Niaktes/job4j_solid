@@ -10,8 +10,6 @@ public interface Store {
 
     List<Food> getFood();
 
-    boolean cleanStore();
-
-    boolean checkSuitability(float remainingShelfLife);
+    void cleanStore();
 
 }

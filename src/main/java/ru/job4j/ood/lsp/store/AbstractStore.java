@@ -24,9 +24,10 @@ public abstract class AbstractStore implements Store {
     }
 
     @Override
-    public boolean cleanStore() {
+    public void cleanStore() {
         foodStore.clear();
-        return true;
     }
+
+    public abstract boolean checkSuitability(float remainingShelfLife);
 
 }

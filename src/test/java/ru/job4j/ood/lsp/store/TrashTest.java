@@ -8,13 +8,13 @@ class TrashTest {
 
     @Test
     void whenRemainingShelfLifeMoreThenZeroPercentThenSuitableIsFalse() {
-        Store trash = new Trash();
+        AbstractStore trash = new Trash();
         assertFalse(trash.checkSuitability(1.1f));
     }
 
     @Test
     void whenRemainingShelfLifeLessThenZeroPercentThenSuitableIsTrue() {
-        Store trash = new Trash();
+        AbstractStore trash = new Trash();
         assertTrue(trash.checkSuitability(0.0f));
         assertTrue(trash.checkSuitability(-1.1f));
     }

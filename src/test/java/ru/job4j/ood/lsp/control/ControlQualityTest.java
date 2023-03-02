@@ -2,10 +2,7 @@ package ru.job4j.ood.lsp.control;
 
 import org.junit.jupiter.api.Test;
 import ru.job4j.ood.lsp.model.Food;
-import ru.job4j.ood.lsp.store.Shop;
-import ru.job4j.ood.lsp.store.Store;
-import ru.job4j.ood.lsp.store.Trash;
-import ru.job4j.ood.lsp.store.Warehouse;
+import ru.job4j.ood.lsp.store.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,7 +13,7 @@ class ControlQualityTest {
 
     @Test
     void whenFoodFreshThenItPlacedInWarehouse() {
-        Store warehouse = new Warehouse();
+        AbstractStore warehouse = new Warehouse();
         ControlQuality control = new ControlQuality(List.of(warehouse));
         LocalDateTime now = LocalDateTime.now();
         Food corn = new Food("Corn", now.plusDays(9), now.minusDays(1), 100, 25);
@@ -29,7 +26,7 @@ class ControlQualityTest {
 
     @Test
     void whenFoodReadyToSellThenItPlacedInShop() {
-        Store shop = new Shop();
+        AbstractStore shop = new Shop();
         ControlQuality control = new ControlQuality(List.of(shop));
         LocalDateTime now = LocalDateTime.now();
         Food salad = new Food("Salad", now.plusDays(9), now, 700, 10);
@@ -43,7 +40,7 @@ class ControlQualityTest {
 
     @Test
     void whenFoodRottenThenItPlacedInTrash() {
-        Store trash = new Trash();
+        AbstractStore trash = new Trash();
         ControlQuality control = new ControlQuality(List.of(trash));
         LocalDateTime now = LocalDateTime.now();
         Food salad = new Food("Salad", now.plusDays(9), now, 700, 10);
@@ -56,7 +53,7 @@ class ControlQualityTest {
 
     @Test
     void whenFoodNotSoFreshThenPriceReduced() {
-        Store shop = new Shop();
+        AbstractStore shop = new Shop();
         ControlQuality control = new ControlQuality(List.of(shop));
         LocalDateTime now = LocalDateTime.now();
         Food corn = new Food("Corn", now.plusDays(2), now.minusDays(8), 100, 25);

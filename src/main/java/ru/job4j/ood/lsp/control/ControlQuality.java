@@ -1,7 +1,7 @@
 package ru.job4j.ood.lsp.control;
 
 import ru.job4j.ood.lsp.model.Food;
-import ru.job4j.ood.lsp.store.Store;
+import ru.job4j.ood.lsp.store.AbstractStore;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -9,9 +9,9 @@ import java.util.List;
 
 public class ControlQuality {
 
-    private final List<Store> stores;
+    private final List<AbstractStore> stores;
 
-    public ControlQuality(List<Store> stores) {
+    public ControlQuality(List<AbstractStore> stores) {
         this.stores = stores;
     }
 
@@ -21,7 +21,7 @@ public class ControlQuality {
             if (remainingShelfLife < 25) {
                 setDiscountPrice(food);
             }
-            for (Store store : stores) {
+            for (AbstractStore store : stores) {
                 if (store.checkSuitability(remainingShelfLife)) {
                    store.add(food);
                    break;
