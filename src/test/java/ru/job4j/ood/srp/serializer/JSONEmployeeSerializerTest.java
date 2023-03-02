@@ -20,16 +20,16 @@ class JSONEmployeeSerializerTest {
         List<Employee> employees = List.of(first, second);
         Serializer<Employee> serializer = new JSONEmployeeSerializer();
         StringBuilder expected = new StringBuilder()
-                .append("{\"name\":\"Gena\",")
+                .append("[{\"name\":\"Gena\",")
                 .append("\"hired\":{\"year\":2023,\"month\":1,\"dayOfMonth\":27,\"hourOfDay\":0,\"minute\":0,\"second\":0},")
                 .append("\"fired\":{\"year\":2023,\"month\":1,\"dayOfMonth\":27,\"hourOfDay\":0,\"minute\":0,\"second\":0},")
                 .append("\"salary\":100.0,")
-                .append("\"currency\":\"USD\"}").append(System.lineSeparator())
+                .append("\"currency\":\"USD\"},")
                 .append("{\"name\":\"Lena\",")
                 .append("\"hired\":{\"year\":2023,\"month\":1,\"dayOfMonth\":27,\"hourOfDay\":0,\"minute\":0,\"second\":0},")
                 .append("\"fired\":{\"year\":2023,\"month\":1,\"dayOfMonth\":27,\"hourOfDay\":0,\"minute\":0,\"second\":0},")
                 .append("\"salary\":100.0,")
-                .append("\"currency\":\"RUB\"}").append(System.lineSeparator());
+                .append("\"currency\":\"RUB\"}]");
         assertEquals(expected.toString(), serializer.serialize(employees));
     }
 

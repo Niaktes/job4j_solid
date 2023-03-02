@@ -16,12 +16,7 @@ public class JSONEmployeeSerializer implements Serializer<Employee> {
 
     @Override
     public String serialize(List<Employee> employees) {
-        StringBuilder json = new StringBuilder();
-        for (Employee employee : employees) {
-            json.append(gson.toJson(employee))
-                    .append(System.lineSeparator());
-        }
-        return json.toString();
+         return gson.toJson(employees);
     }
 
 }
