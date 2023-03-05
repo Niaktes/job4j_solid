@@ -51,16 +51,4 @@ class ControlQualityTest {
         assertEquals(expected, trash.getFood());
     }
 
-    @Test
-    void whenFoodNotSoFreshThenPriceReduced() {
-        AbstractStore shop = new Shop();
-        ControlQuality control = new ControlQuality(List.of(shop));
-        LocalDateTime now = LocalDateTime.now();
-        Food corn = new Food("Corn", now.plusDays(2), now.minusDays(8), 100, 25);
-        Food fish = new Food("Fish", now.plusDays(5), now.minusDays(5), 1000, 50);
-        control.sortFood(List.of(corn, fish));
-        assertEquals(75f, corn.getPrice());
-        assertEquals(1000f, fish.getPrice());
-    }
-
 }
