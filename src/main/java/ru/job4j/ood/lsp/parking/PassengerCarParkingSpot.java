@@ -2,16 +2,16 @@ package ru.job4j.ood.lsp.parking;
 
 public class PassengerCarParkingSpot implements ParkingSpot {
 
-    private int id;
+    private final int id;
     private static final int CAPACITY = 1;
     private boolean isOccupied = false;
 
-    public int getId() {
-        return id;
+    public PassengerCarParkingSpot(int id) {
+        this.id = id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getId() {
+        return id;
     }
 
     public int getCapacity() {

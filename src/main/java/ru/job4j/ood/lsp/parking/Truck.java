@@ -2,19 +2,19 @@ package ru.job4j.ood.lsp.parking;
 
 public class Truck implements Car {
 
-    private int id;
+    private final int id;
     private final int size;
 
-    public Truck(int size) {
+    public Truck(int id, int size) {
+        if (size <= PassengerCar.SIZE) {
+            throw new IllegalArgumentException("Size must be more than 1");
+        }
+        this.id = id;
         this.size = size;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getSize() {

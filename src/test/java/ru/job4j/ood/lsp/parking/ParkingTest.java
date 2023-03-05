@@ -10,10 +10,10 @@ class ParkingTest {
 
     @Test
     void whenEnoughSpotsThenCarsParkedWell() {
-        Car firstPassengerCar = new PassengerCar();
-        Car secondPassengerCar = new PassengerCar();
-        Car firstTruck = new Truck(3);
-        Car secondTruck = new Truck(3);
+        Car firstPassengerCar = new PassengerCar(1);
+        Car secondPassengerCar = new PassengerCar(2);
+        Car firstTruck = new Truck(1, 3);
+        Car secondTruck = new Truck(2, 3);
         List<Car> cars = List.of(firstPassengerCar, secondPassengerCar, firstTruck, secondTruck);
         Parking parking = new Parking(3, 3);
         cars.forEach(car -> assertTrue(parking.park(car)));
@@ -21,10 +21,10 @@ class ParkingTest {
 
     @Test
     void whenNotEnoughSpotsThenCarsParkFalls() {
-        Car firstPassengerCar = new PassengerCar();
-        Car secondPassengerCar = new PassengerCar();
-        Car firstTruck = new Truck(3);
-        Car secondTruck = new Truck(3);
+        Car firstPassengerCar = new PassengerCar(1);
+        Car secondPassengerCar = new PassengerCar(2);
+        Car firstTruck = new Truck(1, 3);
+        Car secondTruck = new Truck(2, 3);
         Parking parking = new Parking(1, 1);
         parking.park(firstPassengerCar);
         parking.park(firstTruck);
@@ -34,10 +34,10 @@ class ParkingTest {
 
     @Test
     void whenNotEnoughPassengerCarSpotsThenPassengerCarsParkFalls() {
-        Car firstPassengerCar = new PassengerCar();
-        Car secondPassengerCar = new PassengerCar();
-        Car firstTruck = new Truck(3);
-        Car secondTruck = new Truck(3);
+        Car firstPassengerCar = new PassengerCar(1);
+        Car secondPassengerCar = new PassengerCar(2);
+        Car firstTruck = new Truck(1, 3);
+        Car secondTruck = new Truck(2, 3);
         Parking parking = new Parking(1, 3);
         parking.park(firstPassengerCar);
         parking.park(firstTruck);
@@ -47,10 +47,10 @@ class ParkingTest {
 
     @Test
     void whenNotEnoughTruckCarSpotsThenTruckCarsParkOnPassengerCarSpot() {
-        Car firstPassengerCar = new PassengerCar();
-        Car secondPassengerCar = new PassengerCar();
-        Car firstTruck = new Truck(3);
-        Car secondTruck = new Truck(3);
+        Car firstPassengerCar = new PassengerCar(1);
+        Car secondPassengerCar = new PassengerCar(2);
+        Car firstTruck = new Truck(1, 3);
+        Car secondTruck = new Truck(2, 3);
         Parking parking = new Parking(4, 1);
         parking.park(firstPassengerCar);
         parking.park(firstTruck);

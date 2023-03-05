@@ -2,15 +2,15 @@ package ru.job4j.ood.lsp.parking;
 
 public class PassengerCar implements Car {
 
-    private int id;
-    private static final int SIZE = 1;
+    private final int id;
+    public static final int SIZE = 1;
+
+    public PassengerCar(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getSize() {
