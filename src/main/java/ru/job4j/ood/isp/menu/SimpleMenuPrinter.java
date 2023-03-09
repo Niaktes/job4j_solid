@@ -12,8 +12,8 @@ public class SimpleMenuPrinter implements MenuPrinter {
             if (layers.length > 1) {
                 text.append(INDENT.repeat(layers.length - 1)).append(" ");
             }
-            text.append(itemInfo.getName()).append(" ");
-            text.append(itemInfo.getNumber());
+            text.append(itemInfo.getNumber()).append(" ");
+            text.append(itemInfo.getName());
             System.out.println(text);
             text.setLength(0);
         });
