@@ -3,6 +3,7 @@ package ru.job4j.ood.lsp.control;
 import ru.job4j.ood.lsp.model.Food;
 import ru.job4j.ood.lsp.store.AbstractStore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControlQuality {
@@ -21,6 +22,15 @@ public class ControlQuality {
                 }
             }
         }
+    }
+
+    public void resortFood() {
+        List<Food> foodToResort = new ArrayList<>();
+        for (AbstractStore store : stores) {
+            foodToResort.addAll(store.getFood());
+            store.cleanStore();
+        }
+        sortFood(foodToResort);
     }
 
 }
